@@ -73,6 +73,11 @@ function Page() {
       stagger: 0.1
     },"-=70%");
 
+    return () => {
+    splitTitle.revert();
+    splitDescription.revert();
+  };
+
   }, { scope: container });
 
   // ✅ volume="0" via useEffect sur tous les éléments video
