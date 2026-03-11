@@ -1,0 +1,33 @@
+﻿@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #6C63FF;
+  --color-secondary: #F50057;
+  --color-accent: #00BCD4;
+}
+
+:root {
+  color-scheme: light;
+}
+
+body {
+  font-family: "Manrope", sans-serif;
+  background: #f7f8fc;
+  color: #101114;
+}
+
+.hero-card {
+  background:
+    linear-gradient(140deg, rgba(10, 10, 10, 0.88), rgba(25, 26, 36, 0.92)),
+    linear-gradient(120deg, rgba(196, 121, 255, 0.35), rgba(0, 178, 255, 0.3)),
+    repeating-linear-gradient(0deg, rgba(255, 255, 255, 0.08) 0 4px, rgba(255, 255, 255, 0) 4px 10px);
+}
+
+.hero-glow {
+  box-shadow: 0 30px 80px rgba(25, 27, 50, 0.25);
+}
+
+.animtion {
+  
+}
