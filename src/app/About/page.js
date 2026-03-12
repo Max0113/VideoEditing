@@ -84,6 +84,7 @@ function page() {
       return () => {
     splitTitle.revert();
     splitDescription.revert();
+    timeline.kill();
   };
   
     }, { scope: container });

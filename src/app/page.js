@@ -67,7 +67,11 @@ export default function Home() {
       ease: "power",
     },"-=50%");
 
-
+    return () => {
+    splitTitle.revert();
+    splitDescription.revert();
+    timeline.kill();
+  };
 
 }, { scope: container });
 
