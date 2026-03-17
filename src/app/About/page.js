@@ -22,7 +22,7 @@ function page() {
 
 
     useGSAP(() => {
-      ScrollSmoother.create({
+      const smoother = ScrollSmoother.create({
         smooth: 1,
         effects: true,
         smoothTouch: 0.1,
@@ -85,6 +85,7 @@ function page() {
     splitTitle.revert();
     splitDescription.revert();
     timeline.kill();
+    smoother.kill()
   };
   
     }, { scope: container });

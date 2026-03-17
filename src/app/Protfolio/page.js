@@ -7,27 +7,39 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { SplitText } from "gsap/SplitText";
 
+import Video from 'next-video';
+
+// ✅ Import كل فيديو بشكل static
+import video11 from '../../../videos/Video11.mp4';
+import video2 from '../../../videos/Video 2.mp4';
+import video8 from '../../../videos/Video8.mp4';
+import video7 from '../../../videos/video7.mp4';
+import comp1 from '../../../videos/Comp 1_1.mp4';
+import comp2 from '../../../videos/Comp 1_2.mp4';
+import videoWork from '../../../videos/video_work.mp4';
+import finalVideo from '../../../videos/FinalVideo1.mp4';
+
+
+const items = [
+  { id: 0, duration: "1:00", src: video11 },
+  { id: 1, duration: "1:00", src: video2 },
+  { id: 3, duration: "1:00", src: video8 },
+  { id: 4, duration: "1:00", src: video7 },
+  { id: 5, duration: "1:00", src: comp1 },
+  { id: 6, duration: "1:00", src: comp2 },
+  { id: 7, duration: "1:00", src: videoWork },
+  { id: 8, duration: "1:00", src: finalVideo },
+];
+
 
 gsap.registerPlugin(useGSAP, ScrollTrigger, ScrollSmoother , SplitText);
 
 function Page() {
-  const items = [
-    { id: 0, duration: "1:00", url: "/Video/video11.mp4" },
-    { id: 1, duration: "1:00", url: "/Video/video 2.mp4" },
-    { id: 2, duration: "1:00", url: "/Video/video10.mp4" },
-    { id: 3, duration: "1:00", url: "/Video/video8.mp4" },
-    { id: 4, duration: "1:00", url: "/Video/video7.mp4" },
-    { id: 5, duration: "1:00", url: "/Video/Comp 1_1.mp4" },
-    { id: 6, duration: "1:00", url: "/Video/Comp 1_2.mp4" },
-    { id: 7, duration: "1:00", url: "/Video/video_work.mp4" },
-    { id: 8, duration: "1:00", url: "/Video/FinalVideo1.mp4" },
-  ];
 
   const container = useRef();
 
-  // ✅ ScrollSmoother à l'intérieur de useGSAP
   useGSAP(() => {
-    ScrollSmoother.create({
+    const smoother = ScrollSmoother.create({
       smooth: 1,
       effects: true,
       smoothTouch: 0.1,
@@ -74,10 +86,11 @@ function Page() {
     },"-=70%");
 
     return () => {
-    splitTitle.revert();
-    splitDescription.revert();
-    timeline.kill();
-  };
+      splitTitle.revert();
+      splitDescription.revert();
+      timeline.kill();
+      smoother.kill();
+    };
 
   }, { scope: container });
 
@@ -125,16 +138,16 @@ function Page() {
             <div>
               <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
                 {items.map((item) => (
-                  <video
+                  <Video
                     key={item.id}
-                    className="w-full h-auto min-h-150 rounded-2xl Video invisible translate-y-8"
+                    src={item.src}
+                    className="w-full h-auto min-h-154 rounded-2xl Video invisible translate-y-8"
                     controls
                     loop
                     playsInline
                     muted  // ✅ muted pour autoplay + volume initial à 0
                   >
-                    <source src={item.url} type="video/mp4" />
-                  </video>
+                  </Video>
                 ))}
               </div>
               <h1 className="text-center my-10 font-extrabold text-[1.5rem]">

@@ -11,6 +11,9 @@ import { SplitText } from "gsap/SplitText";
 
 gsap.registerPlugin(useGSAP, SplitText); 
 
+import Video from 'next-video';
+import getStarted from '../../videos/Video1.mp4';
+
 export default function Home() {
 
   const container = useRef();
@@ -57,7 +60,7 @@ export default function Home() {
       y: 0,
       duration: 1,
       stagger: 0.2,
-      ease: "bounce",
+      ease: "power",
     },"-=20%");
 
     timeline.to(".Card", {
@@ -68,9 +71,9 @@ export default function Home() {
     },"-=50%");
 
     return () => {
-    splitTitle.revert();
-    splitDescription.revert();
-    timeline.kill();
+      splitTitle.revert();
+      splitDescription.revert();
+      timeline.kill();
   };
 
 }, { scope: container });
@@ -86,7 +89,6 @@ export default function Home() {
       <section id="home" className="mx-auto flex w-full max-w-6xl flex-col items-center gap-14 px-6 py-16 lg:flex-row lg:items-start lg:py-24">
         <div className="w-full max-w-xl">
 
-          {/* ✅ opacity-0 يخفيه عند التحميل — GSAP يعمل opacity:1 قبل الأنيميشن */}
           <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl splitTitle opacity-0">
             Creative Video
             <span className="mt-2 block text-slate-500">Editor</span>
@@ -97,13 +99,13 @@ export default function Home() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <button className="inline-flex items-center gap-2 rounded-full bg-black px-3 pr-5 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 hover:-translate-y-0.5 transition-all duration-300 buttons invisible translate-y-8">
+            <button className="inline-flex items-center gap-2 rounded-full bg-black px-3 pr-5 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 hover:-translate-y-0.5 transition-all duration-300 buttons invisible translate-y-4">
               <span className="text-[1.5rem] w-4">
                 <RxTriangleRight />
               </span>
               View My Work
             </button>
-            <button className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-slate-800 hover:border-black/20 hover:-translate-y-0.5 transition-all duration-300 buttons invisible translate-y-8">
+            <button className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-slate-800 hover:border-black/20 hover:-translate-y-0.5 transition-all duration-300 buttons invisible translate-y-4">
               <span className="text-[1.15rem] w-4">
                 <MdOutlineFileDownload />
               </span>
@@ -127,10 +129,16 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full flex justify-center items-center h-100">
-          <video className="w-full h-auto min-h-70 rounded-2xl Video invisible translate-28" controls loop playsInline muted>
-            <source src="/Video1.mp4" type="video/mp4" />
-          </video>
+        <div className="w-full mt-20 flex justify-center items-center rounded-2xl overflow-hidden Video invisible translate-y-8">
+          <Video
+            src={getStarted}
+            style={{ width: '100%', borderRadius: '0.8rem' }}
+            className=" items-center-safe"
+            controls
+            loop
+            playsInline
+            muted
+          />
         </div>
       </section>
     </main>
