@@ -1,11 +1,14 @@
 'use client'
 import React, { useRef, useEffect } from "react";
+import Link from "next/link";
 import Navbar from "@/components/Navbar";
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { SplitText } from "gsap/SplitText";
+import { FaLink } from "react-icons/fa6";
+
 
 import Video from 'next-video';
 
@@ -39,11 +42,6 @@ function Page() {
   const container = useRef();
 
   useGSAP(() => {
-    const smoother = ScrollSmoother.create({
-      smooth: 1,
-      effects: true,
-      smoothTouch: 0.1,
-    });
 
     const splitTitle = new SplitText(".splitTitleP", { type: "words" });
     const splitDescription = new SplitText(".splitDescriptionP", { type: "lines" });
@@ -89,7 +87,6 @@ function Page() {
       splitTitle.revert();
       splitDescription.revert();
       timeline.kill();
-      smoother.kill();
     };
 
   }, { scope: container });
@@ -103,10 +100,10 @@ function Page() {
   }, []);
 
   return (
-    <div id="smooth-wrapper">
-      <div id="smooth-content">
         <section ref={container} className="min-h-screen bg-white">
-          <Navbar />
+          <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-white/20">
+                  <Navbar />
+                </nav>
 
           <div className="mx-auto w-full max-w-6xl px-6 py-16">
             <div className="text-center">
@@ -136,12 +133,12 @@ function Page() {
             </div>
 
             <div>
-              <div className="mt-10 grid gap-8 md:grid-cols-2 lg:grid-cols-3">
+              <div className="mt-10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {items.map((item) => (
                   <Video
                     key={item.id}
                     src={item.src}
-                    className="w-full h-auto min-h-154 rounded-2xl Video invisible translate-y-8"
+                    className="w-full h-auto min-h-auto sm:min-h-154 rounded-2xl Video invisible translate-y-8"
                     controls
                     loop
                     playsInline
@@ -150,14 +147,18 @@ function Page() {
                   </Video>
                 ))}
               </div>
-              <h1 className="text-center my-10 font-extrabold text-[1.5rem]">
+              <h1 className="text-center mt-10 font-extrabold text-[1.5rem]">
                 😉 There is more
-              </h1>
+              </h1> 
+              <Link 
+                className="flex gap-1 justify-center items-center font-bold text-blue-600"
+                href="https://drive.google.com/drive/folders/1OZYZ2_tz8PY9y_jAjGXV-adnFBJip_8q?dmr=1&ec=wgc-drive-%5Bmodule%5D-goto"
+              >
+                <FaLink /><p>Link</p> 
+              </Link>
             </div>
           </div>
         </section>
-      </div>
-    </div>
   );
 }
 

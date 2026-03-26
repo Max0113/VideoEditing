@@ -4,6 +4,7 @@ import React, { useRef } from 'react';
 import { MdOutlineFileDownload } from "react-icons/md";
 import { RxTriangleRight } from "react-icons/rx";
 import Backround from "@/components/Backround";
+import Link from "next/link"
 
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -85,8 +86,10 @@ export default function Home() {
         <Backround />
       </div>
       
-      <Navbar color="" />
-      <section id="home" className="mx-auto flex w-full max-w-6xl flex-col items-center gap-14 px-6 py-16 lg:flex-row lg:items-start lg:py-24">
+      <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-white/20">
+        <Navbar color="" />
+      </nav>
+      <section id="home" className="mx-auto flex w-full max-w-6xl flex-col items-center gap-14 px-6 py-20 lg:flex-row lg:items-start lg:py-24">
         <div className="w-full max-w-xl">
 
           <h1 className="text-4xl font-extrabold leading-tight tracking-tight text-slate-900 sm:text-5xl lg:text-6xl splitTitle opacity-0">
@@ -99,27 +102,27 @@ export default function Home() {
           </p>
 
           <div className="mt-8 flex flex-wrap items-center gap-4">
-            <button className="inline-flex items-center gap-2 rounded-full bg-black px-3 pr-5 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20 hover:-translate-y-0.5 transition-all duration-300 buttons invisible translate-y-4">
-              <span className="text-[1.5rem] w-4">
+            <Link href="/Protfolio" className="inline-flex items-center gap-2 rounded-full bg-black px-3 pr-5 py-3 text-[12px] sm:text-sm font-semibold text-white shadow-lg shadow-black/20 hover:-translate-y-0.5 transition-all duration-300 buttons invisible translate-y-4">
+              <span className="text-[1.4rem] sm:text-[1.5rem] w-4">
                 <RxTriangleRight />
               </span>
               View My Work
-            </button>
-            <button className="inline-flex items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3 text-sm font-semibold text-slate-800 hover:border-black/20 hover:-translate-y-0.5 transition-all duration-300 buttons invisible translate-y-4">
-              <span className="text-[1.15rem] w-4">
+            </Link>
+            <Link href="https://drive.google.com/drive/folders/1OZYZ2_tz8PY9y_jAjGXV-adnFBJip_8q?dmr=1&ec=wgc-drive-%5Bmodule%5D-goto" className="inline-flex text-[12px] sm:text-sm items-center gap-2 rounded-full border border-black/10 bg-white px-6 py-3  font-semibold text-slate-800 hover:border-black/20 hover:-translate-y-0.5 transition-all duration-300 buttons invisible translate-y-4">
+              <span className="text-[1.4rem] sm:text-[1.5rem] w-4">
                 <MdOutlineFileDownload />
               </span>
               Download Reel
-            </button>
+            </Link>
           </div>
 
-          <div className="mt-12 flex flex-wrap gap-8 text-sm text-slate-500">
+          <div className="mt-12 flex flex-wrap gap-8 text-[10px] sm:text-sm text-slate-500">
             <div className="Card invisible">
-              <div className="text-2xl font-extrabold text-slate-900">50+</div>
+              <div className="text-2xl font-extrabold text-slate-900">30+</div>
               Projects Completed
             </div>
             <div className="Card invisible">
-              <div className="text-2xl font-extrabold text-slate-900">5+</div>
+              <div className="text-2xl font-extrabold text-slate-900">2+</div>
               Years Experience
             </div>
             <div className="Card invisible">
@@ -129,7 +132,7 @@ export default function Home() {
           </div>
         </div>
 
-        <div className="w-full mt-20 flex justify-center items-center rounded-2xl overflow-hidden Video invisible translate-y-8">
+        <div className="w-full hidden lg:flex mt-20  justify-center items-center rounded-2xl overflow-hidden Video invisible translate-y-8">
           <Video
             src={getStarted}
             style={{ width: '100%', borderRadius: '0.8rem' }}

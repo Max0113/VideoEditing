@@ -22,11 +22,6 @@ function page() {
 
 
     useGSAP(() => {
-      const smoother = ScrollSmoother.create({
-        smooth: 1,
-        effects: true,
-        smoothTouch: 0.1,
-      });
   
       const splitTitle = new SplitText(".splitTitleP", { type: "words" });
       const splitDescription = new SplitText(".splitDescriptionP", { type: "lines" });
@@ -85,7 +80,7 @@ function page() {
     splitTitle.revert();
     splitDescription.revert();
     timeline.kill();
-    smoother.kill()
+
   };
   
     }, { scope: container });
@@ -93,7 +88,9 @@ function page() {
 
   return (
     <section ref={container} className="min-h-screen bg-white">
-      <Navbar />
+      <nav className="sticky top-0 z-50 bg-white/70 backdrop-blur-md border-b border-white/20">
+        <Navbar />
+      </nav>
 
       <div className="mx-auto flex w-full max-w-5xl flex-col gap-12 px-6 py-16 lg:flex-row lg:items-start lg:gap-16 items-center ">
         <div className="w-full max-w-xl">
