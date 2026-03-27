@@ -1,8 +1,11 @@
 "use client"
 import React , { useRef } from "react";
+import Image from "next/image";
 import Navbar from "@/components/Navbar";
 import { IoIosStarOutline } from "react-icons/io";
-import { BsPersonBoundingBox } from "react-icons/bs";
+import { BsPersonBoundingBox } from  "react-icons/bs";
+
+
 
 import { gsap } from "gsap";
 import { useGSAP } from "@gsap/react";
@@ -195,9 +198,11 @@ function page() {
 
         <div className="w-full flex-1">
           <div className="overflow-hidden rounded-3xl imge invisible translate-y-5">
-            <img
-              src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=80"
+            <Image
+              src="/télécharger.png"
               alt="Video editor portrait"
+              width={900}
+              height={600}
               className="h-120 w-full object-cover imge"
             />
           </div>
