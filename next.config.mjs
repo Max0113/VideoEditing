@@ -1,4 +1,3 @@
-import { withNextVideo } from "next-video/process";
 import { dirname } from "path";
 import { fileURLToPath } from "url";
 
@@ -21,15 +20,4 @@ const nextConfig = {
   },
 };
 
-export default withNextVideo(nextConfig, {
-  folder: 'videos',
-  provider: 'mux',
-  providerConfig: {
-    mux: {
-      requestOptions: {
-        headersTimeout: 60000,
-        bodyTimeout: 300000,
-      }
-    }
-  }
-});
+export default nextConfig;

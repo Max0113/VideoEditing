@@ -24,20 +24,20 @@ function Navbar({ color }) {
   }, [isActive]);
 
   return (
-    <header className="border-b border-black/10 bg-white/70 backdrop-blur-xl z-50">
+    <header className="sticky top-0 border-b border-black/10 bg-white/70 backdrop-blur-xl z-50">
       <nav className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-5">
         <div className="text-lg font-extrabold tracking-tight">VideoEditor</div>
 
         <div
           ref={menuRef}
           className={`
-            flex flex-col bg-white backdrop-blur-2xl top-0 
-            px-20 py-30 h-screen md:h-auto md:p-0 md:bg-transparent
-            md:backdrop-blur-none absolute z-40 items-center gap-8 
-            text-sm font-semibold text-slate-600 md:flex-row 
-            md:relative transition-all duration-300 md:border-0 
-            border-l-[0.2px] border-black/10
-            ${isActive ? "right-0" : "-right-100 md:right-auto"}
+            fixed top-0 right-0 w-[75%] h-screen bg-white z-40
+            flex flex-col items-center justify-center gap-8
+            text-sm font-semibold text-slate-600
+            transition-transform duration-300 ease-in-out
+            md:static md:w-auto md:h-auto md:flex-row md:bg-transparent
+            md:translate-x-0 md:justify-normal
+            ${isActive ? "translate-x-0" : "translate-x-full"}
           `}
         >
           <Link className="transition hover:text-black hover:border-b-2" href="/">Home</Link>
