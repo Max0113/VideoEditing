@@ -8,8 +8,7 @@ import { MdOutlineFileDownload } from "react-icons/md";
 import { RxTriangleRight } from "react-icons/rx";
 import Navbar from "@/components/Navbar";
 import Backround from "@/components/Backround";
-import { CldVideoPlayer } from 'next-cloudinary';
-import 'next-cloudinary/dist/cld-video-player.css';
+import CloudinaryVideoPlayer from "@/components/CloudinaryVideoPlayer";
 
 
 gsap.registerPlugin(useGSAP);
@@ -117,7 +116,7 @@ export default function Home() {
         </div>
 
         <div className="Video mt-20 hidden w-full items-center justify-center overflow-hidden rounded-2xl lg:flex opacity-0 translate-y-8">
-          <CldVideoPlayer
+          <CloudinaryVideoPlayer
             src="Video1_kjoekw"
             style={{ width: '100%', borderRadius: '0.8rem' }}
             className="items-center-safe"
@@ -125,6 +124,8 @@ export default function Home() {
             loop
             playsInline
             muted
+            fallbackClassName="flex min-h-80 w-full items-center justify-center rounded-2xl bg-slate-100 p-6 text-center text-sm text-slate-500"
+            fallbackMessage="Set NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME to show the reel preview."
           />
         </div>
       </section>

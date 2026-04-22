@@ -8,9 +8,7 @@ import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { ScrollSmoother } from "gsap/ScrollSmoother";
 import { SplitText } from "gsap/SplitText";
 import { FaLink } from "react-icons/fa6";
-
-import { CldVideoPlayer } from 'next-cloudinary';
-import 'next-cloudinary/dist/cld-video-player.css';
+import CloudinaryVideoPlayer from "@/components/CloudinaryVideoPlayer";
 
 
 const items = [
@@ -126,12 +124,14 @@ function Page() {
               <div className="mt-10 grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
                 {items.map((item) => (
                   <div key={item.id} className="Video opacity-0 translate-y-8">
-                  <CldVideoPlayer
+                  <CloudinaryVideoPlayer
                     key={item.id}
                     src={item.src}
                     className="w-full h-auto min-h-auto sm:min-h-154 rounded-2xl"
                     controls
                     loop
+                    fallbackClassName="flex min-h-56 items-center justify-center rounded-2xl bg-slate-100 p-6 text-center text-sm text-slate-500 sm:min-h-154"
+                    fallbackMessage="Add NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME to enable portfolio previews."
                    />
                    </div>
                 ))}
